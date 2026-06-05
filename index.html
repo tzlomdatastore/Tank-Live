@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ဆီကန် ပမာဏ - V1.2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  
+  <title>ဆီကန် ပမာဏ - V1.4</title>
   <style>
     * { box-sizing: border-box; font-family: sans-serif; }
-    body { background-color: #e2e8f0; padding: 12px; margin: 0; color: #1e293b; }
+    body { background-color: #e2e8f0; padding: 12px; margin: 0; color: #1e293b; user-select: none; }
     
     .container { 
       max-width: 450px; 
@@ -35,7 +42,7 @@
     /* ဆေးတောင့်ပုံစံ (Capsule Shape) */
     .bar-stack { width: 100%; display: flex; flex-direction: column-reverse; border-radius: 20px; overflow: hidden; height: 100%; justify-content: flex-start; background: #cbd5e1; }
     
-    /* 🟢 လက်ရှိဆီ - မျက်လုံးအေးစေသော အစိမ်းရောင်သို့ ပြောင်းလဲခြင်း */
+    /* လက်ရှိဆီ - အစိမ်းရောင် */
     .bar-current { background-color: #10b981; width: 100%; transition: height 0.2s ease; position: relative; border-radius: 0 0 20px 20px; }
     .bar-space { background-color: #94a3b8; width: 100%; transition: height 0.2s ease; position: relative; border-radius: 20px 20px 0 0; }
     
@@ -50,7 +57,7 @@
     .table-wrapper { border: 1px solid #cbd5e1; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
     table { width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; }
     
-    /* 🥈 ဇယားခေါင်းစဉ် - မီးခိုးရောင် အရောင်ပြေး (Silver-Gray Gradient) */
+    /* ဇယားခေါင်းစဉ် - မီးခိုးရောင် အရောင်ပြေး */
     th { 
       background: linear-gradient(135deg, #64748b, #475569); 
       border-bottom: 1px solid #cbd5e1; 
@@ -138,8 +145,7 @@
   </div>
 
   <script>
-    // Version ဒေတာ သတ်မှတ်ချက် (နောင်တွင် V2, V3 စသည်ဖြင့် ဤနေရာတွင် ပြင်ဆင်နိုင်သည်)
-    const appVersion = "1.2";
+    const appVersion = "1.4";
 
     const tanks = [
       { id: 1, name: '95', capacity: 900, current: 400, space: 500, outInch: 0 },
@@ -184,11 +190,11 @@
         row.innerHTML = `
           <td class="bg-name">${tank.name}</td>
           <td class="td-current">
-            <input type="number" id="cur-${index}" value="${tank.current}" class="table-input" style="font-weight:800;">
+            <input type="number" id="cur-${index}" value="${tank.current}" class="table-input" style="font-weight:800;" inputmode="numeric">
           </td>
           <td class="bg-space" id="spc-${index}">${tank.space}</td>
           <td>
-            <input type="number" id="out-${index}" value="${tank.outInch}" class="table-input" style="color:#475569;">
+            <input type="number" id="out-${index}" value="${tank.outInch}" class="table-input" style="color:#475569;" inputmode="numeric">
           </td>
         `;
         tbody.appendChild(row);
